@@ -1,9 +1,11 @@
+import sys
 import pygame
 from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from shot import Shot
+from logger import log_state, log_event
 
 def main():
     pygame.init()
@@ -29,6 +31,7 @@ def main():
     dt = 0
 
     while(True):
+        log_state()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
@@ -37,11 +40,13 @@ def main():
 
         for asteroid in asteroids:
             if asteroid.is_collision(player):
+                log_event("player_hit")
                 print("Game over!")
-                exit(0)
+                sys.exit()
 
             for shot in shots:
                 if shot.is_collision(asteroid):
+                    log_event("asteroid_shot")
                     shot.kill()
                     asteroid.split()
 
