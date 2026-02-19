@@ -85,6 +85,7 @@ This project was created as a learning exercise to practice:
 
 - Inspired by the classic Asteroids arcade game
 - Built with Python and Pygame
+- Adapted from a python game development course on [Boot.dev](https://boot.dev)
 
 ---
 
